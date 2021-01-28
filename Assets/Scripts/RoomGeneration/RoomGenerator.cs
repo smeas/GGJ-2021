@@ -11,6 +11,7 @@ public class RoomGenerator : MonoBehaviour {
 	private Room currentRoom;
 	private Room nextRoom;
 	private Vector2 nextGridCell;
+	private Direction nextRoomDirection;
 
 	private Transform playerTransform;
 
@@ -24,18 +25,22 @@ public class RoomGenerator : MonoBehaviour {
 	// Collider on the whole(middle of) room TODO: WORK ON THIS
 	// Triggers act as both enter and loading zones
 
-	private void Update() {
-		Vector2 playerGridCell = MathX.Floor(snappingCamera.WorldToGrid(playerTransform.position));
-		Vector2 currentRoomGridCell = MathX.Floor(snappingCamera.WorldToGrid(currentRoom.transform.position));
+	// private void Update() {
+	// 	Vector2 playerGridCell = MathX.Floor(snappingCamera.WorldToGrid(playerTransform.position));
+	// 	Vector2 currentRoomGridCell = MathX.Floor(snappingCamera.WorldToGrid(currentRoom.transform.position));
+	//
+	// 	if (playerGridCell != currentRoomGridCell)
+	// 		HandleEnteringNewRoom();
+	// }
 
-		if (playerGridCell != currentRoomGridCell)
-			HandleEnteringNewRoom(playerGridCell - currentRoomGridCell);
-	}
+	public void HandleEnteringNewRoom() {
+		if (nextRoom == null) return;
 
-	private void HandleEnteringNewRoom(Vector2 direction) {
 		Destroy(currentRoom.gameObject);
 
 		currentRoom = nextRoom;
+		currentRoom.borderHandler.OpenExits();
+		currentRoom.loadingZoneHandler.ActivateLoadingZones(nextRoomDirection);
 		nextRoom = null;
 	}
 
@@ -57,14 +62,16 @@ public class RoomGenerator : MonoBehaviour {
 		nextGridCell = MathX.Floor(nextGridPosition);
 
 		nextRoom = Instantiate(GetRandomRoom(), snappingCamera.GridToWorld(nextGridPosition), Quaternion.identity);
-		nextRoom.loadingZoneHandler.SetEnterDirection(direction);
+		nextRoom.borderHandler.HandleNewEnterDirection(direction);
+		nextRoomDirection = direction;
 	}
 
 	private void MoveNextRoom(Direction direction) {
 		Vector2 nextGridPosition = snappingCamera.WorldToGrid(currentRoom.transform.position) + direction.ToVector();
 
 		nextRoom.transform.position = snappingCamera.GridToWorld(nextGridPosition);
-		nextRoom.loadingZoneHandler.SetEnterDirection(direction);
+		nextRoom.borderHandler.HandleNewEnterDirection(direction);
+		nextRoomDirection = direction;
 	}
 
 	private static void Swap<T>(ref T a, ref T b) {

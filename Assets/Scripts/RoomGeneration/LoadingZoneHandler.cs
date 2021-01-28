@@ -27,7 +27,7 @@ public class LoadingZoneHandler : MonoBehaviour {
 			roomGenerator.LoadRoom(Direction.Down);
 	}
 
-	public void SetEnterDirection(Direction direction) {
+	public void ActivateLoadingZones(Direction direction) {
 		enterDirection = direction;
 
 		leftLoadingZone.gameObject.SetActive(true);
