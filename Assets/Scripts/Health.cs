@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour {
 	public int maxHealth = 3;
 	public int currentHealth = 3;
+	public bool isDead = false;
 
 	public UnityEvent onDeath;
 
@@ -13,13 +14,15 @@ public class Health : MonoBehaviour {
 	}
 
 	public void Damage(int incomingDamage) {
+		if (isDead) return;
 		currentHealth -= incomingDamage;
 
 		if (currentHealth <= 0)
-			HandleWakeUp();
+			HandleDeath();
 	}
 
-	private void HandleWakeUp() {
+	private void HandleDeath() {
+		isDead = true;
 		onDeath.Invoke();
 	}
 }
