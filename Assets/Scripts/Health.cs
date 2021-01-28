@@ -6,7 +6,7 @@ public class Health : MonoBehaviour {
 	public int maxHealth = 3;
 	public int currentHealth = 3;
 
-	public UnityEvent onWakeUp;
+	public UnityEvent onDeath;
 
 	private void Start() {
 		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -20,7 +20,6 @@ public class Health : MonoBehaviour {
 	}
 
 	private void HandleWakeUp() {
-		Debug.Log($"{gameObject.name} has woken up");
-		onWakeUp.Invoke();
+		onDeath.Invoke();
 	}
 }
