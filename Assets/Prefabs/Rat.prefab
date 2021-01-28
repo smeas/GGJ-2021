@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 8871895951386011671}
   - component: {fileID: 8871895951386011670}
   - component: {fileID: 1994589828413740205}
+  - component: {fileID: 9028708873410918184}
+  - component: {fileID: 5758262982540856156}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Enemy
@@ -176,3 +178,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backpack: {fileID: 2597367696645557304}
+--- !u!114 &9028708873410918184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871895951386011675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838dd146d033a684b9674bef876f2103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  currentHealth: 1
+  onWakeUp:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5758262982540856156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871895951386011675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9f20dff6c89fe438e726a991e160d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
