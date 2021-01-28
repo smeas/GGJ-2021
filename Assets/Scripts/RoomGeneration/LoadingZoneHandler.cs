@@ -16,6 +16,9 @@ public class LoadingZoneHandler : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
+		if (!other.CompareTag("Player")) return;
+		if (other.isTrigger) return;
+
 		// We're assuming that the player will never touch two collider simultaneously
 		if (other.IsTouching(leftLoadingZone))
 			roomGenerator.LoadRoom(Direction.Left);
