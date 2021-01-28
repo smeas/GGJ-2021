@@ -51,6 +51,8 @@ public class SnappingCamera : MonoBehaviour {
 
 	public bool IsShaking => doShake;
 
+	public Vector2 GridCellSize => cellSize;
+
 	private void Start() {
 		camera = GetComponent<Camera>();
 		container = transform.parent;
@@ -69,6 +71,10 @@ public class SnappingCamera : MonoBehaviour {
 
 		if (target == null)
 			Debug.LogError($"{nameof(SnappingCamera)} has no target.");
+
+		float cameraSize = camera.orthographicSize;
+		cellSize = GetCameraWorldRect(camera).size;
+		gridOrigin = startPosition - new Vector2(cameraSize * camera.aspect, cameraSize);
 	}
 
 	private void LateUpdate() {
