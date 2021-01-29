@@ -63,7 +63,6 @@ public class RoomGenerator : MonoBehaviour {
 		nextGridCell = MathX.Floor(nextGridPosition);
 
 		nextRoom = Instantiate(GetRandomRoom(), snappingCamera.GridToWorld(nextGridPosition), Quaternion.identity);
-		nextRoom.borderHandler.HandleNewEnterDirection(direction);
 		nextRoomDirection = direction;
 	}
 
@@ -71,7 +70,6 @@ public class RoomGenerator : MonoBehaviour {
 		Vector2 nextGridPosition = snappingCamera.WorldToGrid(currentRoom.transform.position) + direction.ToVector();
 
 		nextRoom.transform.position = snappingCamera.GridToWorld(nextGridPosition);
-		nextRoom.borderHandler.HandleNewEnterDirection(direction);
 		nextRoomDirection = direction;
 	}
 
