@@ -16,18 +16,30 @@ public class RatAI : MonoBehaviour {
 	public bool collisionAvoidance = true;
 	public bool allowMove = true;
 
+	[Space]
+	public float attackRange = 2f;
+
 	private Rigidbody2D rb2d;
+	private EnemyAttack enemyAttack;
 	private int obstacleLayer;
 	private int enemyLayer;
 	private Vector2 velocity;
 
 	private void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
+		enemyAttack = GetComponent<EnemyAttack>();
 		obstacleLayer = 1 << LayerMask.NameToLayer("Obstacle");
 		enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
 
 		if (followTarget == null)
 			followTarget = GameObject.FindWithTag("Player").transform;
+	}
+
+	private void Update() {
+		float sqrDistanceToTarget = (transform.position - followTarget.position).sqrMagnitude;
+		if (sqrDistanceToTarget <= attackRange * attackRange) {
+			Attack();
+		}
 	}
 
 	private void FixedUpdate() {
@@ -44,6 +56,10 @@ public class RatAI : MonoBehaviour {
 			rb2d.velocity = velocity;
 	}
 
+	private void Attack() {
+		enemyAttack.Attack(velocity);
+	}
+
 	private Vector2 Seek(Vector2 target) {
 		Vector2 direction = target - (Vector2)transform.position;
 		float distance = direction.magnitude;
@@ -54,7 +70,7 @@ public class RatAI : MonoBehaviour {
 			desiredVelocity = direction.normalized * maxVelocity;
 
 			if (distance < slowRadius)
-				desiredVelocity *= distance / slowRadius;
+				desiredVelocity *= Mathf.Max(distance - stopRadius, 0) / (slowRadius - stopRadius);
 
 			Debug.DrawRay(transform.position, desiredVelocity, Color.red);
 		}

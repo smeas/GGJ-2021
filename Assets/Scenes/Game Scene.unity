@@ -178,7 +178,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8871895951386011675, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5758262982540856156, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
 --- !u!1001 &516669149
 PrefabInstance:
@@ -235,7 +240,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8871895951386011675, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5758262982540856156, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
 --- !u!1001 &863120153
 PrefabInstance:
@@ -292,7 +302,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8871895951386011675, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5758262982540856156, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
 --- !u!1001 &872066323
 PrefabInstance:
@@ -349,7 +364,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8871895951386011675, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5758262982540856156, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
 --- !u!1 &1434988188
 GameObject:
@@ -459,7 +479,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8871895951386011675, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5758262982540856156, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
 --- !u!1001 &1669894847
 PrefabInstance:
