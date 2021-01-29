@@ -36,7 +36,7 @@ public class RoomGenerator : MonoBehaviour {
 	public void HandleEnteringNewRoom() {
 		if (nextRoom == null) return;
 
-		Destroy(currentRoom.gameObject);
+		Destroy(currentRoom.gameObject, 1f);
 
 		currentRoom = nextRoom;
 		currentRoom.Initialize(nextRoomDirection);
