@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e831a32240214a64ba27cf031bd3da09, type: 3}
-  m_Name: Pebble
+  m_Name: Fish Plush
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a5520f532b0b2c14dbcfa7c120e7d05e, type: 3}
+  sprite: {fileID: 21300000, guid: 50b3c1ba4e869e545aecd5dda445c008, type: 3}
   points: 10
   randomWeight: 1

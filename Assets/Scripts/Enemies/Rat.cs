@@ -43,6 +43,7 @@ public class Rat : MonoBehaviour {
 		navigationCollider.enabled = false;
 		GetComponent<Collider2D>().enabled = false;
 		GetComponent<RatAI>().enabled = false;
+		GetComponent<Rigidbody2D>().velocity = default;
 
 		GetComponent<SpriteRenderer>()
 			.DOFade(0, deathFadeDuration)

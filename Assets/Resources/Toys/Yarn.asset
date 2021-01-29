@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e831a32240214a64ba27cf031bd3da09, type: 3}
-  m_Name: Acorn
+  m_Name: Yarn
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: dea5397dcb1d47b4bb29443e7f6b4204, type: 3}
+  sprite: {fileID: 21300000, guid: b1d3eae2afbb71f4b9f1416cab701180, type: 3}
   points: 10
   randomWeight: 1
