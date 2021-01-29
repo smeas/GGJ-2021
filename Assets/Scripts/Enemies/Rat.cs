@@ -16,7 +16,7 @@ public class Rat : MonoBehaviour {
 	}
 
 	private void OnDeath() {
-		toy.Drop();
+		toy.Drop(transform);
 		GetComponent<SpriteRenderer>()
 			.DOFade(0, deathFadeDuration)
 			.OnComplete(() => Destroy(gameObject));

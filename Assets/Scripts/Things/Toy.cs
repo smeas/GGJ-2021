@@ -18,8 +18,8 @@ public class Toy : MonoBehaviour {
 		}
 	}
 
-	public void Drop() {
-		transform.parent = null;
+	public void Drop(Transform root) {
+		transform.parent = root.parent;
 		pickupTrigger.enabled = true;
 	}
 }
