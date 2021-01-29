@@ -39,8 +39,7 @@ public class RoomGenerator : MonoBehaviour {
 		Destroy(currentRoom.gameObject);
 
 		currentRoom = nextRoom;
-		currentRoom.borderHandler.OpenExits();
-		currentRoom.loadingZoneHandler.ActivateLoadingZones(nextRoomDirection);
+		currentRoom.Initialize(nextRoomDirection);
 		nextRoom = null;
 	}
 
