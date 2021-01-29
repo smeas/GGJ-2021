@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour {
 	public Transform hand;
-	public SpriteRenderer weapon;
-	public Sprite sideSweepSprite;
-	public Sprite upDownSweepSprite;
+	public GameObject weapon;
 	public float attackDuration = 1f;
 	public bool isAttacking;
 
@@ -18,7 +16,7 @@ public class PlayerAttack : MonoBehaviour {
 		playerController = GetComponent<PlayerController>();
 		animator = GetComponent<Animator>();
 
-		weapon.enabled = false;
+		weapon.SetActive(false);
 	}
 
 	private void Update() {
@@ -57,12 +55,12 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 	private IEnumerator CoAttack(Vector2 direction) {
-		weapon.enabled = true;
+		weapon.SetActive(true);
 		HandleAttackAnimation(direction);
 
 		yield return new WaitForSeconds(attackDuration);
 
-		weapon.enabled = false;
+		weapon.SetActive(false);
 		isAttacking = false;
 	}
 
@@ -71,12 +69,10 @@ public class PlayerAttack : MonoBehaviour {
 
 		if (dir.y == 0) {
 			if (dir.x != 0) {
-				weapon.sprite = sideSweepSprite;
 				animator.Play("Attack - Side");
 			}
 		}
 		else {
-			weapon.sprite = upDownSweepSprite;
 			animator.Play(dir.y > 0 ? "Attack - Up" : "Attack - Down");
 		}
 	}

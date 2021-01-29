@@ -165,9 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 4930897729812593162}
-  weapon: {fileID: 4930897730025805932}
-  sideSweepSprite: {fileID: 21300000, guid: 127c9b0aa3abfaf4ebf59cede5ccd7bb, type: 3}
-  upDownSweepSprite: {fileID: 21300000, guid: 1c382ee1c57aa934a9f8f3a3aac26512, type: 3}
+  weapon: {fileID: 4930897730025805934}
   attackDuration: 0.4
   isAttacking: 0
 --- !u!114 &7593877978544693167

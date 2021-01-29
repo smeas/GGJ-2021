@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
 	private Animator animator;
+	private PlayerAttack playerAttack;
 
 	private Vector2 movement;
 
 	private void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		playerAttack = GetComponent<PlayerAttack>();
 	}
 
 	private void Update() {
@@ -26,7 +28,9 @@ public class PlayerController : MonoBehaviour {
 		if (movement.x != 0 || movement.y != 0)
 			lastNonZeroMovement = movement;
 
-		FlipObject(movement);
+		if (!playerAttack.isAttacking)
+			FlipObject(movement);
+
 		animator.SetFloat(speedXHash, movement.x);
 		animator.SetFloat(speedYHash, movement.y);
 	}
