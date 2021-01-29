@@ -2,21 +2,21 @@ using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+	private static readonly int speedXHash = Animator.StringToHash("speedX");
+	private static readonly int speedYHash = Animator.StringToHash("speedY");
+
 	public float speed = 10f;
 
 	public Vector2 lastNonZeroMovement;
 
 	private Rigidbody2D rb2d;
 	private Animator animator;
-	private PlayerAttack playerAttack;
-	private Vector2 direction;
 
 	private Vector2 movement;
 
 	private void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
-		playerAttack = GetComponent<PlayerAttack>();
 	}
 
 	private void Update() {
@@ -26,20 +26,9 @@ public class PlayerController : MonoBehaviour {
 		if (movement.x != 0 || movement.y != 0)
 			lastNonZeroMovement = movement;
 
-		if (!playerAttack.isAttacking) {
-			FlipObject(movement);
-			HandleMovementSprite(movement);
-		}
-	}
-
-		private void HandleMovementSprite(Vector2 currDirection) {
-		if (currDirection.y == 0) {
-			if (currDirection.x != 0)
-				animator.Play("Side");
-		}
-		else {
-			animator.Play(lastNonZeroMovement.y > 0 ? "Up" : "Down");
-		}
+		FlipObject(movement);
+		animator.SetFloat(speedXHash, movement.x);
+		animator.SetFloat(speedYHash, movement.y);
 	}
 
 	public void FlipObject(Vector2 newDirection) {
@@ -49,8 +38,6 @@ public class PlayerController : MonoBehaviour {
 		else if (newDirection.x < 0)
 			localScale.x = -1;
 		transform.localScale = localScale;
-
-		direction = newDirection;
 	}
 
 	private void FixedUpdate() {
