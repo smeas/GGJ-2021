@@ -41,6 +41,8 @@ public class RoomGenerator : MonoBehaviour {
 		currentRoom = nextRoom;
 		currentRoom.Initialize(nextRoomDirection);
 		nextRoom = null;
+
+		CloudManager.Instance.SetClosedBorder(nextRoomDirection.Inverted());
 	}
 
 	private Room GetRandomRoom() {
