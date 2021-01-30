@@ -27,15 +27,20 @@ public class Rat : MonoBehaviour {
 	}
 
 	private void Update() {
+		Vector2 velocity = rb2d.velocity;
+		float xRatio = velocity.x / ratAI.maxVelocity;
+		float yRatio = velocity.y / ratAI.maxVelocity;
+		const float flipThreshold = 0.3f;
+
 		Vector3 localScale = transform.localScale;
-		if (rb2d.velocity.x > 0)
+		if (xRatio > flipThreshold)
 			localScale.x = -1;
-		else if (rb2d.velocity.x < 0)
+		else if (xRatio < -flipThreshold)
 			localScale.x = 1;
 		transform.localScale = localScale;
 
-		animator.SetFloat(speedYRatioHash, rb2d.velocity.y / ratAI.maxVelocity);
-		animator.SetFloat(speedXRatioHash, rb2d.velocity.x / ratAI.maxVelocity);
+		animator.SetFloat(speedYRatioHash, yRatio);
+		animator.SetFloat(speedXRatioHash, xRatio);
 	}
 
 	private void OnDeath() {
