@@ -49,7 +49,7 @@ public class RoomGenerator : MonoBehaviour {
 		int index = Random.Range(0, roomPrefabs.Length - 1);
 
 		Room room = roomPrefabs[index];
-		Swap(ref roomPrefabs[index], ref roomPrefabs[roomPrefabs.Length - 1]);
+		Util.Swap(ref roomPrefabs[index], ref roomPrefabs[roomPrefabs.Length - 1]);
 		return room;
 	}
 
@@ -71,11 +71,5 @@ public class RoomGenerator : MonoBehaviour {
 
 		nextRoom.transform.position = snappingCamera.GridToWorld(nextGridPosition);
 		nextRoomDirection = direction;
-	}
-
-	private static void Swap<T>(ref T a, ref T b) {
-		T temp = a;
-		a = b;
-		b = temp;
 	}
 }

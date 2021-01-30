@@ -1,11 +1,14 @@
+using System;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [DefaultExecutionOrder(-10)]
 public class ToyManager : SingletonBehaviour<ToyManager> {
 	public Toy toyPrefab;
 
-	private ToyData[] toys;
+	[NonSerialized]
+	public ToyData[] toys;
 
 	private void Start() {
 		toys = Resources.LoadAll<ToyData>("Toys");
