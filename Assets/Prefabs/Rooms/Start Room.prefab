@@ -562,4 +562,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1994589828413740205, guid: 05f7052ecb3152342b458574ec06c924, type: 3}
   maxEnemies: 3
-  spawnInterval: 2
+  spawnInterval: 0.8
+  clearSpawnArea: 2.5

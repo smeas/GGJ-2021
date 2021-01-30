@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -5,53 +6,48 @@ using Random = UnityEngine.Random;
 public class EnemySpawnHandler : MonoBehaviour {
 	public Rat enemyPrefab;
 	public int maxEnemies = 5;
-	public float spawnInterval = 2f;
+	public float spawnInterval = 0.2f;
+	public float clearSpawnArea = 1;
 
 	private EnemySpawnPoint[] spawnPoints;
-	private Rat[] spawnedEnemies;
+
+	private Transform playerTransform;
 
 	private void Start() {
+		playerTransform = GameObject.FindWithTag("Player").transform;
+
 		spawnPoints = GetComponentsInChildren<EnemySpawnPoint>();
-		spawnedEnemies = new Rat[maxEnemies];
 	}
 
 	public void InitializeEnemySpawning() {
-		for (int i = 0; i < spawnedEnemies.Length - 1; i++) {
-			if (spawnedEnemies[i] != null) continue;
-
-			SpawnEnemy(i);
-		}
-
 		StartCoroutine(CoContinousSpawning());
 	}
 
-	private void SpawnEnemy(int index) {
-		EnemySpawnPoint spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+	private void SpawnEnemy() {
+		EnemySpawnPoint spawnPoint = GetSpawnPoint();
 		Rat newRat = Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity);
-
-		Health ratHealth = newRat.GetComponent<Health>();
-		ratHealth.onDeath.AddListener(() => HandleEnemyDeath(index));
-
-		spawnedEnemies[index] = newRat;
-		spawnedEnemies[index].transform.parent = transform;
+		newRat.transform.parent = transform;
 	}
 
-	private void HandleEnemyDeath(int index) {
-		spawnedEnemies[index] = null;
+	private EnemySpawnPoint GetSpawnPoint() {
+		EnemySpawnPoint spawnPoint;
+		do {
+			spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+		} while (IsCloseToPlayer(spawnPoint));
+
+		return spawnPoint;
+	}
+
+	private bool IsCloseToPlayer(EnemySpawnPoint spawnPoint) {
+		float sqrDistance = (playerTransform.position - spawnPoint.transform.position).sqrMagnitude;
+		return sqrDistance <= clearSpawnArea * clearSpawnArea;
 	}
 
 	private IEnumerator CoContinousSpawning() {
 		float interval = spawnInterval;
-		yield return new WaitForSeconds(interval);
 
-		while (true) {
-			for (int i = 0; i < spawnedEnemies.Length - 1; i++) {
-				if (spawnedEnemies[i] == null) {
-					SpawnEnemy(i);
-					break;
-				}
-			}
-
+		for (int i = 0; i < maxEnemies; i++) {
+			SpawnEnemy();
 			yield return new WaitForSeconds(interval);
 		}
 	}
