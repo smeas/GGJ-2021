@@ -1,19 +1,19 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
 public class Rat : MonoBehaviour {
-	private static readonly int speedYHash = Animator.StringToHash("speedY");
-	private static readonly int speedXHash = Animator.StringToHash("speedX");
+	private static readonly int speedYRatioHash = Animator.StringToHash("speedYRatio");
+	private static readonly int speedXRatioHash = Animator.StringToHash("speedXRatio");
 
 	public Transform backpack;
 	public GameObject weapon;
 	public Collider2D navigationCollider;
 	public float deathFadeDuration = 1f;
+	private Animator animator;
+	private RatAI ratAI;
+	private Rigidbody2D rb2d;
 
 	private Toy toy;
-	private Animator animator;
-	private Rigidbody2D rb2d;
 
 	private void Start() {
 		toy = ToyManager.Instance.CreateRandom();
@@ -22,6 +22,7 @@ public class Rat : MonoBehaviour {
 		GetComponent<Health>().onDeath.AddListener(OnDeath);
 		animator = GetComponent<Animator>();
 		rb2d = GetComponent<Rigidbody2D>();
+		ratAI = GetComponent<RatAI>();
 	}
 
 	private void Update() {
@@ -32,8 +33,8 @@ public class Rat : MonoBehaviour {
 			localScale.x = 1;
 		transform.localScale = localScale;
 
-		animator.SetFloat(speedYHash, rb2d.velocity.y);
-		animator.SetFloat(speedXHash, rb2d.velocity.x);
+		animator.SetFloat(speedYRatioHash, rb2d.velocity.y / ratAI.maxVelocity);
+		animator.SetFloat(speedXRatioHash, rb2d.velocity.x / ratAI.maxVelocity);
 	}
 
 	private void OnDeath() {
