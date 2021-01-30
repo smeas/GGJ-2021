@@ -386,6 +386,7 @@ MonoBehaviour:
   backpack: {fileID: 2597367696645557304}
   weapon: {fileID: 1225309088}
   navigationCollider: {fileID: 3784762205287093238}
+  deathEffectPrefab: {fileID: 8990915809069147194, guid: 8c024e2dd6baec844912b35744be7748, type: 3}
   deathFadeDuration: 1
 --- !u!114 &9028708873410918184
 MonoBehaviour:
@@ -479,5 +480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32098c610dc848a6a0ad973051e8940a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionSource: {fileID: 0}
   isStatic: 0
   orderOffset: 0

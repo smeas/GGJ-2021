@@ -8,11 +8,12 @@ public class Rat : MonoBehaviour {
 	public Transform backpack;
 	public GameObject weapon;
 	public Collider2D navigationCollider;
+	public GameObject deathEffectPrefab;
 	public float deathFadeDuration = 1f;
+
 	private Animator animator;
 	private RatAI ratAI;
 	private Rigidbody2D rb2d;
-
 	private Toy toy;
 
 	private void Start() {
@@ -46,14 +47,7 @@ public class Rat : MonoBehaviour {
 	private void OnDeath() {
 		toy.Drop(transform);
 
-		weapon.SetActive(false);
-		navigationCollider.enabled = false;
-		GetComponent<Collider2D>().enabled = false;
-		GetComponent<RatAI>().enabled = false;
-		GetComponent<Rigidbody2D>().velocity = default;
-
-		GetComponent<SpriteRenderer>()
-			.DOFade(0, deathFadeDuration)
-			.OnComplete(() => Destroy(gameObject));
+		Instantiate(deathEffectPrefab, transform.position, Quaternion.identity, transform.parent);
+		Destroy(gameObject);
 	}
 }
