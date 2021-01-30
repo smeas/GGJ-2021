@@ -60,7 +60,7 @@ public class MusicPlayer : SingletonBehaviour<MusicPlayer> {
 	private void CrossFadeToClip(AudioClip newClip) {
 		secondAudioSource.volume = 0;
 		secondAudioSource.clip = newClip;
-		secondAudioSource.time = currentAudioSource.time;
+		secondAudioSource.timeSamples = currentAudioSource.timeSamples;
 		secondAudioSource.Play();
 
 		DOTween.Sequence()
