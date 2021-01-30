@@ -1,12 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour {
 	public int maxHealth = 3;
 	public int currentHealth = 3;
-	public bool isDead = false;
+	public bool isDead;
 
+	public UnityEvent onDamageReceived;
 	public UnityEvent onDeath;
 
 	private void Start() {
@@ -17,6 +17,7 @@ public class Health : MonoBehaviour {
 		if (isDead) return;
 		currentHealth -= incomingDamage;
 
+		onDamageReceived.Invoke();
 		if (currentHealth <= 0)
 			HandleDeath();
 	}
