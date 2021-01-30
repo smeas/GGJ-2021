@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007894039, y: 0.1263032}
+  m_Offset: {x: 0.007894039, y: 0.8263032}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32098c610dc848a6a0ad973051e8940a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionSource: {fileID: 0}
   isStatic: 1
   orderOffset: 0
 --- !u!1 &6479319507966608631
@@ -200,7 +201,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.7}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
