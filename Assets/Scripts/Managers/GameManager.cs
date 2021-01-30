@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : SingletonBehaviour<GameManager> {
-	[NonSerialized]
-	public int[] toyCounts;
+	public UnityEvent onPointAdded;
+
+	[NonSerialized] public int[] toyCounts;
 
 	private void Start() {
 		toyCounts = new int[ToyManager.Instance.toys.Length];
@@ -19,13 +19,6 @@ public class GameManager : SingletonBehaviour<GameManager> {
 		}
 
 		toyCounts[index] += 1;
-	}
-
-	// TODO: Replace with real UI.
-	private void OnGUI() {
-		string scoreText = string.Join(", ", toyCounts);
-		GUILayout.Label($"Score: {scoreText}", new GUIStyle {
-			fontSize = 24
-		});
+		onPointAdded.Invoke();
 	}
 }
