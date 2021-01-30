@@ -11,7 +11,9 @@ public class ToyManager : SingletonBehaviour<ToyManager> {
 	public ToyData[] toys;
 
 	private void Start() {
-		toys = Resources.LoadAll<ToyData>("Toys");
+		toys = Resources.LoadAll<ToyData>("Toys")
+			.OrderBy(x => x.name) // In case 'LoadAll' does not have a deterministic order.
+			.ToArray();
 	}
 
 	public Toy CreateRandom() {

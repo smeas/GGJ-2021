@@ -13,7 +13,7 @@ public class Toy : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		if (!other.isTrigger && other.attachedRigidbody.CompareTag("Player")) {
-			GameManager.Instance.AddScore(data.points);
+			GameManager.Instance.AddScore(data);
 			Destroy(gameObject);
 		}
 	}
