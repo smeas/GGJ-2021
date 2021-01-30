@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : SingletonBehaviour<GameManager> {
-	public UnityEvent onPointAdded;
+	public UnityEvent<int> onPointAdded;
 	public int roomsEntered = 0;
 
 	[NonSerialized] public int[] toyCounts;
@@ -20,6 +20,6 @@ public class GameManager : SingletonBehaviour<GameManager> {
 		}
 
 		toyCounts[index] += 1;
-		onPointAdded.Invoke();
+		onPointAdded.Invoke(index);
 	}
 }

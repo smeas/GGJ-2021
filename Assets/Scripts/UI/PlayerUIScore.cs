@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class PlayerUIScore : MonoBehaviour {
 	public GameObject UIScorePrefab;
 
 	private TextMeshProUGUI[] texts;
+	private Image[] images;
 
 	private void Start() {
 		Setup();
@@ -17,19 +19,22 @@ public class PlayerUIScore : MonoBehaviour {
 	private void Setup() {
 		ToyData[] toys = ToyManager.Instance.toys;
 		texts = new TextMeshProUGUI[toys.Length];
+		images = new Image[toys.Length];
 
-		GameObject go;
 		for (int i = 0; i < toys.Length; i++) {
-			go = Instantiate(UIScorePrefab, transform);
+			GameObject go = Instantiate(UIScorePrefab, transform);
 
-			go.GetComponentInChildren<Image>().sprite = toys[i].sprite;
+			images[i] = go.GetComponentInChildren<Image>();
+			images[i].sprite = toys[i].sprite;
 			texts[i] = go.GetComponentsInChildren<TextMeshProUGUI>()[1];
 			texts[i].text = GameManager.Instance.toyCounts[i].ToString();
 		}
 	}
 
-	private void HandlePointAdd() {
+	private void HandlePointAdd(int index) {
 		for (int i = 0; i < texts.Length; i++)
 			texts[i].text = GameManager.Instance.toyCounts[i].ToString();
+
+		images[index].transform.DOPunchScale(new Vector3(0.2f, 0.2f, 0), 0.5f);
 	}
 }
