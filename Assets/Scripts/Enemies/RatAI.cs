@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 public class RatAI : MonoBehaviour {
+	public Collider2D navigationCollider;
 	public Transform followTarget;
 	public float slowRadius = 4f;
 	public float stopRadius = 1f;
@@ -24,6 +25,7 @@ public class RatAI : MonoBehaviour {
 	private int obstacleLayer;
 	private int enemyLayer;
 	private Vector2 velocity;
+	private readonly RaycastHit2D[] raycastHits = new RaycastHit2D[2];
 
 	private void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
@@ -84,7 +86,7 @@ public class RatAI : MonoBehaviour {
 	private Vector2 AvoidObstacles() {
 		Vector2 self = transform.position;
 
-		RaycastHit2D hit = Physics2D.Raycast(self, velocity, visionDistance, obstacleLayer | enemyLayer);
+		RaycastHit2D hit = RaycastExcludeSelf(self, velocity, visionDistance, obstacleLayer | enemyLayer);
 		if (hit.collider == null) return Vector2.zero;
 
 		Debug.DrawLine(transform.position, hit.point, Color.yellow);
@@ -100,5 +102,15 @@ public class RatAI : MonoBehaviour {
 		Debug.DrawRay(hit.collider.bounds.center, avoidance, Color.magenta);
 
 		return avoidance.normalized * maxAvoidForce;
+	}
+
+	private RaycastHit2D RaycastExcludeSelf(Vector3 origin, Vector3 direction, float maxDistance, int layerMask) {
+		int numHits = Physics2D.RaycastNonAlloc(origin, direction, raycastHits, maxDistance, layerMask);
+		for (int i = 0; i < numHits; i++) {
+			if (raycastHits[i].collider != navigationCollider)
+				return raycastHits[i];
+		}
+
+		return default;
 	}
 }
