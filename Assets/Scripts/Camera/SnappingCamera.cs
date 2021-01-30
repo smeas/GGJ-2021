@@ -2,6 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
+[DefaultExecutionOrder(-1)]
 public class SnappingCamera : MonoBehaviour {
 	[SerializeField] private Transform target = null;
 

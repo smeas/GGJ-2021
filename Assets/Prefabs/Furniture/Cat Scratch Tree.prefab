@@ -67,8 +67,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7584159034998152751}
   - component: {fileID: 4049232559777996566}
+  - component: {fileID: 3074273142675022669}
   m_Layer: 0
-  m_Name: Cat_Scratch_Tree
+  m_Name: Cat Scratch Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +142,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3074273142675022669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347866540488901564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32098c610dc848a6a0ad973051e8940a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStatic: 1
+  orderOffset: 0
 --- !u!1 &6479319507966608631
 GameObject:
   m_ObjectHideFlags: 0

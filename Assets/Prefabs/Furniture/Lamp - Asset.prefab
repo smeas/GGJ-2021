@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 571166136060440950}
   - component: {fileID: 4560118836454295876}
+  - component: {fileID: 756694557247333081}
   m_Layer: 0
   m_Name: Lamp - Asset
   m_TagString: Untagged
@@ -84,6 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &756694557247333081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211239895986107357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32098c610dc848a6a0ad973051e8940a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStatic: 1
+  orderOffset: 0
 --- !u!1 &4209408739737866760
 GameObject:
   m_ObjectHideFlags: 0

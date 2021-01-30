@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
 public static class MathX {
+	public static float Fract(float value) {
+		return value - Mathf.Floor(value);
+	}
+
 	public static Vector2 Floor(Vector2 vec) {
 		return new Vector2(Mathf.Floor(vec.x), Mathf.Floor(vec.y));
 	}
