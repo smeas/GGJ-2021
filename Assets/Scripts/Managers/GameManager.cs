@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class GameManager : SingletonBehaviour<GameManager> {
 	public UnityEvent onPointAdded;
+	public int roomsEntered = 0;
 
 	[NonSerialized] public int[] toyCounts;
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,6 +16,7 @@ public class EnemySpawnHandler : MonoBehaviour {
 		playerTransform = GameObject.FindWithTag("Player").transform;
 
 		spawnPoints = GetComponentsInChildren<EnemySpawnPoint>();
+		maxEnemies += (int)Mathf.Pow(1.15f, GameManager.Instance.roomsEntered);
 	}
 
 	public void InitializeEnemySpawning() {

@@ -43,6 +43,7 @@ public class RoomGenerator : MonoBehaviour {
 		nextRoom = null;
 
 		CloudManager.Instance.SetClosedBorder(nextRoomDirection.Inverted());
+		GameManager.Instance.roomsEntered++;
 	}
 
 	private Room GetRandomRoom() {
