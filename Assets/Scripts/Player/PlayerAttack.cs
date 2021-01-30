@@ -10,11 +10,13 @@ public class PlayerAttack : MonoBehaviour {
 	private Camera mainCamera;
 	private PlayerController playerController;
 	private Animator animator;
+	private SpriteRenderer sweepSpriteRenderer;
 
 	private void Start() {
 		mainCamera = Camera.main;
 		playerController = GetComponent<PlayerController>();
 		animator = GetComponent<Animator>();
+		sweepSpriteRenderer = weapon.GetComponent<SpriteRenderer>();
 
 		weapon.SetActive(false);
 	}
@@ -31,10 +33,17 @@ public class PlayerAttack : MonoBehaviour {
 
 			playerController.FlipObject(dirVec);
 
-			if (direction == Direction.Left)
+			if (direction == Direction.Left) {
 				dirVec = direction.Inverted().ToVector();
-			else
+				sweepSpriteRenderer.flipY = true;
+			}
+			else {
 				dirVec = direction.ToVector();
+				if (direction == Direction.Right)
+					sweepSpriteRenderer.flipY = true;
+				else
+					sweepSpriteRenderer.flipY = false;
+			}
 
 			angle = Mathf.Atan2(dirVec.y, dirVec.x) * Mathf.Rad2Deg;
 			hand.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
