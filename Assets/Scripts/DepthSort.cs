@@ -6,6 +6,7 @@ public class DepthSort : MonoBehaviour {
 	private const int SortingValues = 1 << 16;
 	private const int OffsetValues = 256;
 
+	public Transform positionSource;
 	public bool isStatic = false;
 	[Range(-128, 127)]
 	public int orderOffset;
@@ -28,7 +29,7 @@ public class DepthSort : MonoBehaviour {
 	}
 
 	private void UpdateLayerPosition() {
-		Vector2 gridPosition = snappingCamera.WorldToGrid(transform.position);
+		Vector2 gridPosition = snappingCamera.WorldToGrid((positionSource != null ? positionSource : transform).position);
 		float t = 1 - MathX.Fract(gridPosition.y);
 		int order = Mathf.FloorToInt(t * (SortingValues - OffsetValues) - (SortingValues - OffsetValues) / 2) + orderOffset;
 		spriteRenderer.sortingOrder = order;

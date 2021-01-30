@@ -18,6 +18,7 @@ public class Rat : MonoBehaviour {
 	private void Start() {
 		toy = ToyManager.Instance.CreateRandom();
 		toy.transform.SetParent(backpack, false);
+		toy.GetComponent<DepthSort>().positionSource = transform;
 
 		GetComponent<Health>().onDeath.AddListener(OnDeath);
 		animator = GetComponent<Animator>();
