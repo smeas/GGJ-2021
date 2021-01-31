@@ -33,7 +33,7 @@ public class EnemySpawnHandler : MonoBehaviour {
 		EnemySpawnPoint spawnPoint;
 		do {
 			spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-		} while (IsCloseToPlayer(spawnPoint));
+		} while (IsCloseToPlayer(spawnPoint) && spawnPoints.Length > 1);
 
 		return spawnPoint;
 	}
