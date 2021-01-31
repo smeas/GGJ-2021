@@ -1,10 +1,14 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Highscore : MonoBehaviour {
+	public GameObject scoreOneContainer;
 	public TextMeshProUGUI scoreOne;
+	public GameObject scoreTwoContainer;
 	public TextMeshProUGUI scoreTwo;
+	public GameObject scoreThreeContainer;
 	public TextMeshProUGUI scoreThree;
 
 	public SceneReference menuScene;
@@ -18,9 +22,14 @@ public class Highscore : MonoBehaviour {
 	}
 
 	private void UpdateTextValues() {
-		scoreOne.text = scores[0];
-		scoreTwo.text = scores[1];
-		scoreThree.text = scores[2];
+		scoreOneContainer.SetActive(Int16.Parse(scores[0]) > 0);
+		scoreOne.text = Int16.Parse(scores[0]) > 0 ? scores[0] : "";
+
+		scoreTwoContainer.SetActive(Int16.Parse(scores[1]) > 0);
+		scoreTwo.text = Int16.Parse(scores[1]) > 0 ?scores[1] : "";
+
+		scoreThreeContainer.SetActive(Int16.Parse(scores[2]) > 0);
+		scoreThree.text = Int16.Parse(scores[2]) > 0 ? scores[2] : "";
 	}
 
 	public void ReturnToMenu() {

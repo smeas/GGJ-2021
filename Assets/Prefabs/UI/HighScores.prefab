@@ -409,11 +409,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659f8dd77d87acc47a8bb944f4dc544d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreOneContainer: {fileID: 6371696301619256752}
   scoreOne: {fileID: 6371696302603227590}
+  scoreTwoContainer: {fileID: 6371696303289415896}
   scoreTwo: {fileID: 6371696301374206023}
+  scoreThreeContainer: {fileID: 6371696303433546594}
   scoreThree: {fileID: 6371696301553745332}
   menuScene:
-    buildIndex: 0
+    buildIndex: 1
     sceneAsset: {fileID: 102900000, guid: a26bc3ed792e82c49852a6cea78b0352, type: 3}
 --- !u!1 &6371696302603227584
 GameObject:
