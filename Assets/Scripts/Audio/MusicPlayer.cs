@@ -27,6 +27,7 @@ public class MusicPlayer : SingletonBehaviour<MusicPlayer> {
 
 		secondAudioSource = gameObject.AddComponent<AudioSource>();
 		secondAudioSource.loop = currentAudioSource.loop;
+		secondAudioSource.outputAudioMixerGroup = currentAudioSource.outputAudioMixerGroup;
 	}
 
 	private void OnEnable() {

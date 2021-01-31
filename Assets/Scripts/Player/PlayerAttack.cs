@@ -4,7 +4,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour {
 	public Transform hand;
 	public GameObject weapon;
+	public AudioSource attackSound;
 	public float attackDuration = 1f;
+	public float attackCooldown = 0.5f;
 	public bool isAttacking;
 
 	private Camera mainCamera;
@@ -67,9 +69,14 @@ public class PlayerAttack : MonoBehaviour {
 		weapon.SetActive(true);
 		HandleAttackAnimation(direction);
 
+		attackSound.Play();
+
 		yield return new WaitForSeconds(attackDuration);
 
 		weapon.SetActive(false);
+
+		yield return new WaitForSeconds(attackCooldown);
+
 		isAttacking = false;
 	}
 

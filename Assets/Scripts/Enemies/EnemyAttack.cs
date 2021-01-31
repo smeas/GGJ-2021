@@ -8,6 +8,9 @@ public class EnemyAttack : MonoBehaviour {
 	public float attackCooldown = 1f;
 	private Animator animator;
 
+	[Space]
+	public AudioSource attackSound;
+
 	private bool isAttacking;
 	private float lastAttackStartTime;
 
@@ -59,6 +62,7 @@ public class EnemyAttack : MonoBehaviour {
 	private IEnumerator CoAttack(Vector2 dirVec) {
 		weapon.SetActive(true);
 		HandleAttackAnimation(dirVec);
+		attackSound.Play();
 		yield return new WaitForSeconds(attackDuration);
 		weapon.SetActive(false);
 		isAttacking = false;
