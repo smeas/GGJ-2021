@@ -7,6 +7,7 @@ public class EnemySpawnHandler : MonoBehaviour {
 	public int maxEnemies = 5;
 	public float spawnInterval = 0.2f;
 	public float clearSpawnArea = 1;
+	public int maxTries = 5;
 
 	private EnemySpawnPoint[] spawnPoints;
 
@@ -31,9 +32,11 @@ public class EnemySpawnHandler : MonoBehaviour {
 
 	private EnemySpawnPoint GetSpawnPoint() {
 		EnemySpawnPoint spawnPoint;
+		int tries = 0;
 		do {
 			spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-		} while (IsCloseToPlayer(spawnPoint) && spawnPoints.Length > 1);
+			tries++;
+		} while (IsCloseToPlayer(spawnPoint) && spawnPoints.Length > 1 && tries < maxTries);
 
 		return spawnPoint;
 	}
