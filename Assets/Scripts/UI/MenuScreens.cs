@@ -20,21 +20,12 @@ public class MenuScreens : MonoBehaviour {
 			.Play();
 	}
 
-	public void ShowCredits() {
+	public void ShowScreen(RectTransform screen) {
 		DOTween.Sequence()
 			.Append(mainScreen.DOMoveX(-mainScreen.rect.width, duration))
-			.Append(creditsScreen.DOMoveX(0, duration)).SetEase(Ease.InOutSine)
+			.Append(screen.DOMoveX(0, duration)).SetEase(Ease.InOutSine)
 			.Play();
 
-		currentScreen = creditsScreen;
-	}
-
-	public void ShowScores() {
-		DOTween.Sequence()
-			.Append(mainScreen.DOMoveX(-mainScreen.rect.width, duration))
-			.Append(scoreScreen.DOMoveX(0, duration)).SetEase(Ease.InOutSine)
-			.Play();
-
-		currentScreen = scoreScreen;
+		currentScreen = screen;
 	}
 }
