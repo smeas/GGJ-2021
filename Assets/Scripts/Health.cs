@@ -5,6 +5,7 @@ public class Health : MonoBehaviour {
 	public int maxHealth = 3;
 	public int currentHealth = 3;
 	public bool isDead;
+	public bool isInvulnerable;
 
 	public UnityEvent onDamageReceived;
 	public UnityEvent onDeath;
@@ -14,7 +15,7 @@ public class Health : MonoBehaviour {
 	}
 
 	public void Damage(int incomingDamage) {
-		if (isDead) return;
+		if (isDead || isInvulnerable) return;
 		currentHealth -= incomingDamage;
 
 		onDamageReceived.Invoke();

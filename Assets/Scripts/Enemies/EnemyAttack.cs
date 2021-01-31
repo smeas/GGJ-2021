@@ -39,7 +39,6 @@ public class EnemyAttack : MonoBehaviour {
 		else
 			dirVec = dir.ToVector();
 
-		print(dirVec);
 		angle = Mathf.Atan2(dirVec.y, dirVec.x) * Mathf.Rad2Deg;
 		hand.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
