@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuMusic: {fileID: 8300000, guid: 100bce2a35cb2bc4388a7cd77b6e1700, type: 3}
   gameMusic: {fileID: 8300000, guid: 74a421fa37312334297631aabde33a36, type: 3}
+  gameScene:
+    buildIndex: 1
+    sceneAsset: {fileID: 102900000, guid: 376fde4fd2750774ea7a317556c7a9c0, type: 3}
 --- !u!82 &6016686686789895956
 AudioSource:
   m_ObjectHideFlags: 0

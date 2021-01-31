@@ -6,21 +6,22 @@ using UnityEngine.SceneManagement;
 public class MusicPlayer : SingletonBehaviour<MusicPlayer> {
 	public AudioClip menuMusic;
 	public AudioClip gameMusic;
+	public SceneReference gameScene;
 
 	private AudioSource currentAudioSource;
 	private AudioSource secondAudioSource;
 	private float baseVolume;
-	private int currentScene;
+	private int currentSceneIndex;
 
 	protected override void Awake() {
 		base.Awake();
 
 		DontDestroyOnLoad(this);
 
-		currentScene = SceneManager.GetActiveScene().buildIndex;
+		currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
 		currentAudioSource = GetComponent<AudioSource>();
-		currentAudioSource.clip = currentScene == 0 ? menuMusic : gameMusic;
+		currentAudioSource.clip = currentSceneIndex == gameScene.BuildIndex ? gameMusic : menuMusic;
 		currentAudioSource.Play();
 
 		baseVolume = currentAudioSource.volume;
@@ -39,10 +40,10 @@ public class MusicPlayer : SingletonBehaviour<MusicPlayer> {
 	}
 
 	private void OnSceneChanged(Scene _, Scene to) {
-		if ((currentScene == 0) != (to.buildIndex == 0))
-			CrossFadeToClip(to.buildIndex == 0 ? menuMusic : gameMusic);
+		if ((currentSceneIndex == gameScene.BuildIndex) != (to.buildIndex == gameScene.BuildIndex))
+			CrossFadeToClip(to.buildIndex == gameScene.BuildIndex ? gameMusic : menuMusic);
 
-		currentScene = to.buildIndex;
+		currentSceneIndex = to.buildIndex;
 	}
 
 	// private void FadeToClip(AudioClip newClip) {
