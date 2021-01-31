@@ -6,7 +6,7 @@ public class MenuScreens : MonoBehaviour {
 	public RectTransform creditsScreen;
 
 	private RectTransform currentScreen;
-	private float duration = 1f;
+	private float duration = 0.8f;
 
 	private void Start() {
 		currentScreen = mainScreen;
