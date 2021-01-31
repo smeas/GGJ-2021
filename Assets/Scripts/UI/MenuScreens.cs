@@ -4,9 +4,10 @@ using UnityEngine;
 public class MenuScreens : MonoBehaviour {
 	public RectTransform mainScreen;
 	public RectTransform creditsScreen;
+	public RectTransform scoreScreen;
+	private readonly float duration = 0.8f;
 
 	private RectTransform currentScreen;
-	private float duration = 0.8f;
 
 	private void Start() {
 		currentScreen = mainScreen;
@@ -26,5 +27,14 @@ public class MenuScreens : MonoBehaviour {
 			.Play();
 
 		currentScreen = creditsScreen;
+	}
+
+	public void ShowScores() {
+		DOTween.Sequence()
+			.Append(mainScreen.DOMoveX(-mainScreen.rect.width, duration))
+			.Append(scoreScreen.DOMoveX(0, duration)).SetEase(Ease.InOutSine)
+			.Play();
+
+		currentScreen = scoreScreen;
 	}
 }

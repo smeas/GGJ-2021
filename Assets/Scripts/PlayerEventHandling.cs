@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerEventHandling : MonoBehaviour {
 	public Health health;
-	public SceneReference MenuScene;
+	public SceneReference gameOverScene;
 
 	public SpriteRenderer spriteRenderer;
 	public float flickerAlpha;
@@ -16,6 +16,12 @@ public class PlayerEventHandling : MonoBehaviour {
 	private void Start() {
 		health.onDeath.AddListener(HandleDeath);
 		health.onDamageReceived.AddListener(HandleReceivedDamage);
+
+		if (!PlayerPrefs.HasKey("highscore"))
+			PlayerPrefs.SetString("highscore", "0-0-0");
+
+		if (!PlayerPrefs.HasKey("lastscore"))
+			PlayerPrefs.SetInt("lastscore", 0);
 	}
 
 	private void HandleReceivedDamage() {
@@ -45,6 +51,26 @@ public class PlayerEventHandling : MonoBehaviour {
 	}
 
 	private void HandleDeath() {
-		SceneManager.LoadScene(MenuScene);
+		HandlePotentialHighscore();
+
+		SceneManager.LoadScene(gameOverScene);
+	}
+
+	private void HandlePotentialHighscore() {
+		string[] score = PlayerPrefs.GetString("highscore").Split('-');
+
+		for (int i = 0; i < score.Length; i++)
+			if (GameManager.Instance.TotalScore > int.Parse(score[i])) {
+				if (i == 0)
+					score[2] = score[1];
+				if (i == 0 || i == 1)
+					score[1] = score[0];
+
+				score[i] = GameManager.Instance.TotalScore.ToString();
+				break;
+			}
+
+		PlayerPrefs.SetString("highscore", $"{score[0]}-{score[1]}-{score[2]}");
+		PlayerPrefs.SetInt("lastscore", GameManager.Instance.TotalScore);
 	}
 }

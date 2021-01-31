@@ -5354,9 +5354,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 7593877978544693167}
-  MenuScene:
-    buildIndex: 0
-    sceneAsset: {fileID: 102900000, guid: a26bc3ed792e82c49852a6cea78b0352, type: 3}
+  gameOverScene:
+    buildIndex: 2
+    sceneAsset: {fileID: 102900000, guid: f1ce907d425437249bd43dfcc0d7aab2, type: 3}
   spriteRenderer: {fileID: 6953531050157642666}
   flickerAlpha: 0.75
   flickerDuration: 0.5
