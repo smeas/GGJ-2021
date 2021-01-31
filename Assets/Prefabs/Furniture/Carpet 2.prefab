@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6183461387505359834}
   - component: {fileID: 7856352497848397928}
-  - component: {fileID: -8304676176648835441}
   m_Layer: 0
   m_Name: Carpet 2
   m_TagString: Untagged
@@ -83,18 +82,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8304676176648835441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911892063454548192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32098c610dc848a6a0ad973051e8940a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionSource: {fileID: 0}
-  isStatic: 1
-  orderOffset: 0

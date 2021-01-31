@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5408108239424374329, guid: 15de54f7d0f227745b69a37404b839fa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15de54f7d0f227745b69a37404b839fa, type: 3}
 --- !u!4 &4196076236589352450 stripped
@@ -389,6 +393,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8054196601857356674}
     m_Modifications:
+    - target: {fileID: 1728788462193528731, guid: 26f4c69cc83271244b55a2a8ca873897, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3140588782406559344, guid: 26f4c69cc83271244b55a2a8ca873897, type: 3}
       propertyPath: m_Name
       value: Carpet 3
@@ -645,6 +653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carpet 2 - Asset
       objectReference: {fileID: 0}
+    - target: {fileID: 7796062049700965350, guid: 71c1c825a0df7dc499905161f8f3d749, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808852546253809008, guid: 71c1c825a0df7dc499905161f8f3d749, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -751,6 +763,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5408108239424374329, guid: 15de54f7d0f227745b69a37404b839fa, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15de54f7d0f227745b69a37404b839fa, type: 3}
 --- !u!4 &4196076235202399703 stripped
@@ -817,6 +833,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6328286238159747578, guid: f8c7030a5f57ccb42bc37b0d793bd010, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8c7030a5f57ccb42bc37b0d793bd010, type: 3}
 --- !u!4 &140759438015493976 stripped
@@ -841,11 +861,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4366585577703402965, guid: 127b496279d290548805e208c9bbe8be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 64.1
       objectReference: {fileID: 0}
     - target: {fileID: 4366585577703402965, guid: 127b496279d290548805e208c9bbe8be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 49.9
       objectReference: {fileID: 0}
     - target: {fileID: 4366585577703402965, guid: 127b496279d290548805e208c9bbe8be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1081,6 +1101,10 @@ PrefabInstance:
     - target: {fileID: 4202775683207116785, guid: f8c7030a5f57ccb42bc37b0d793bd010, type: 3}
       propertyPath: m_Name
       value: Carpet 1 - Asset (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328286238159747578, guid: f8c7030a5f57ccb42bc37b0d793bd010, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8c7030a5f57ccb42bc37b0d793bd010, type: 3}
