@@ -6,12 +6,12 @@ public class EnemyAttack : MonoBehaviour {
 	public GameObject weapon;
 	public float attackDuration = 1f;
 	public float attackCooldown = 1f;
-	private Animator animator;
+	public bool isAttacking;
 
 	[Space]
 	public AudioSource attackSound;
 
-	private bool isAttacking;
+	private Animator animator;
 	private float lastAttackStartTime;
 
 	private void Start() {

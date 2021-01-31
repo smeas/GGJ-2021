@@ -15,6 +15,7 @@ public class Rat : MonoBehaviour {
 	private RatAI ratAI;
 	private Rigidbody2D rb2d;
 	private Toy toy;
+	private EnemyAttack enemyAttack;
 
 	private void Start() {
 		toy = ToyManager.Instance.CreateRandom();
@@ -25,6 +26,7 @@ public class Rat : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rb2d = GetComponent<Rigidbody2D>();
 		ratAI = GetComponent<RatAI>();
+		enemyAttack = GetComponent<EnemyAttack>();
 	}
 
 	private void Update() {
@@ -33,12 +35,14 @@ public class Rat : MonoBehaviour {
 		float yRatio = velocity.y / ratAI.maxVelocity;
 		const float flipThreshold = 0.3f;
 
-		Vector3 localScale = transform.localScale;
-		if (xRatio > flipThreshold)
-			localScale.x = -1;
-		else if (xRatio < -flipThreshold)
-			localScale.x = 1;
-		transform.localScale = localScale;
+		if (!enemyAttack.isAttacking) {
+			Vector3 localScale = transform.localScale;
+			if (xRatio > flipThreshold)
+				localScale.x = -1;
+			else if (xRatio < -flipThreshold)
+				localScale.x = 1;
+			transform.localScale = localScale;
+		}
 
 		animator.SetFloat(speedYRatioHash, yRatio);
 		animator.SetFloat(speedXRatioHash, xRatio);
