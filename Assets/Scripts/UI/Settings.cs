@@ -10,10 +10,10 @@ public class Settings : MonoBehaviour {
 
 	private void Start() {
 		if (!PlayerPrefs.HasKey("musicVolume"))
-			PlayerPrefs.SetFloat("musicVolume", 0f);
+			PlayerPrefs.SetFloat("musicVolume", 0.5f);
 
 		if (!PlayerPrefs.HasKey("sfxVolume"))
-			PlayerPrefs.SetFloat("sfxVolume", 0f);
+			PlayerPrefs.SetFloat("sfxVolume", 0.5f);
 
 		SetVolume();
 	}
