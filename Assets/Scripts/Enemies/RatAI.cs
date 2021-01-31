@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class RatAI : MonoBehaviour {
@@ -6,26 +5,27 @@ public class RatAI : MonoBehaviour {
 	public Transform followTarget;
 	public float slowRadius = 4f;
 	public float stopRadius = 1f;
-	[Space]
-	public float maxVelocity = 4f;
+
+	[Space] public float maxVelocity = 4f;
+
 	public float visionDistance = 5f;
 	public float maxSeekForce = 0.5f;
 	public float maxAvoidForce = 1f;
 
-	[Space]
-	public bool seeking = true;
+	[Space] public bool seeking = true;
+
 	public bool collisionAvoidance = true;
 	public bool allowMove = true;
 
-	[Space]
-	public float attackRange = 2f;
+	[Space] public float attackRange = 2f;
+
+	private readonly RaycastHit2D[] raycastHits = new RaycastHit2D[2];
+	private EnemyAttack enemyAttack;
+	private int enemyLayer;
+	private int obstacleLayer;
 
 	private Rigidbody2D rb2d;
-	private EnemyAttack enemyAttack;
-	private int obstacleLayer;
-	private int enemyLayer;
 	private Vector2 velocity;
-	private readonly RaycastHit2D[] raycastHits = new RaycastHit2D[2];
 
 	private void Start() {
 		rb2d = GetComponent<Rigidbody2D>();
@@ -39,9 +39,7 @@ public class RatAI : MonoBehaviour {
 
 	private void Update() {
 		float sqrDistanceToTarget = (transform.position - followTarget.position).sqrMagnitude;
-		if (sqrDistanceToTarget <= attackRange * attackRange) {
-			Attack();
-		}
+		if (sqrDistanceToTarget <= attackRange * attackRange) Attack();
 	}
 
 	private void FixedUpdate() {
@@ -59,11 +57,11 @@ public class RatAI : MonoBehaviour {
 	}
 
 	private void Attack() {
-		enemyAttack.Attack(velocity);
+		enemyAttack.Attack(followTarget.position - transform.position);
 	}
 
 	private Vector2 Seek(Vector2 target) {
-		Vector2 direction = target - (Vector2)transform.position;
+		Vector2 direction = target - (Vector2) transform.position;
 		float distance = direction.magnitude;
 
 		Vector2 desiredVelocity = Vector2.zero;
@@ -78,7 +76,7 @@ public class RatAI : MonoBehaviour {
 		}
 
 		Vector2 steering = desiredVelocity - velocity;
-		Debug.DrawRay(transform.position + (Vector3)velocity, steering, Color.blue);
+		Debug.DrawRay(transform.position + (Vector3) velocity, steering, Color.blue);
 
 		return Vector2.ClampMagnitude(steering, maxSeekForce);
 	}
@@ -86,7 +84,8 @@ public class RatAI : MonoBehaviour {
 	private Vector2 AvoidObstacles() {
 		Vector2 self = transform.position;
 
-		RaycastHit2D hit = RaycastExcludeSelf(self, velocity, visionDistance, obstacleLayer | enemyLayer);
+		RaycastHit2D hit =
+			RaycastExcludeSelf(self, velocity, visionDistance, obstacleLayer | enemyLayer);
 		if (hit.collider == null) return Vector2.zero;
 
 		Debug.DrawLine(transform.position, hit.point, Color.yellow);
@@ -97,19 +96,19 @@ public class RatAI : MonoBehaviour {
 
 		float p = Vector2.Dot(selfToObstacle, velocityNormalized);
 
-		Vector2 avoidance = (self + velocityNormalized * p) - obstacle;
+		Vector2 avoidance = self + velocityNormalized * p - obstacle;
 
 		Debug.DrawRay(hit.collider.bounds.center, avoidance, Color.magenta);
 
 		return avoidance.normalized * maxAvoidForce;
 	}
 
-	private RaycastHit2D RaycastExcludeSelf(Vector3 origin, Vector3 direction, float maxDistance, int layerMask) {
+	private RaycastHit2D RaycastExcludeSelf(
+		Vector3 origin, Vector3 direction, float maxDistance, int layerMask) {
 		int numHits = Physics2D.RaycastNonAlloc(origin, direction, raycastHits, maxDistance, layerMask);
-		for (int i = 0; i < numHits; i++) {
+		for (int i = 0; i < numHits; i++)
 			if (raycastHits[i].collider != navigationCollider)
 				return raycastHits[i];
-		}
 
 		return default;
 	}
