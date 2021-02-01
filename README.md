@@ -18,4 +18,4 @@ Get the game: https://smeas.itch.io/where-is-my-stuff
 
 **Audio**
 
-- Christopher Svärd
+- Christopher Svärd ([SoundCloud](https://soundcloud.com/user-svaerd))
