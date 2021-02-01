@@ -12,6 +12,7 @@ public class Highscore : MonoBehaviour {
 	public TextMeshProUGUI scoreThree;
 
 	public SceneReference menuScene;
+	public SceneReference gameScene;
 
 	private string[] scores;
 
@@ -34,5 +35,9 @@ public class Highscore : MonoBehaviour {
 
 	public void ReturnToMenu() {
 		SceneManager.LoadScene(menuScene);
+	}
+
+	public void Retry() {
+		SceneManager.LoadScene(gameScene);
 	}
 }
