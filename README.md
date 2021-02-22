@@ -4,6 +4,8 @@ Travel through a colorful dreamworld and help the small cat collect as many toys
 
 Get the game: https://smeas.itch.io/where-is-my-stuff
 
+![Baguette Cat](Images/BaguetteCat.png)
+
 ## Credits
 
 **Programming**
